@@ -1,0 +1,38 @@
+<div>
+    <form>
+        <div><h3>Add todo items</h3></div>
+        <div class="row">
+            <div class="col-xs-10">
+                <input class="form-control" placeholder="todo item" type="text" name="todo-name" id="todo-name">
+            </div>
+            <div class="col-xs-2">
+                <button class="btn btn-default">Add</button>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px;" class="panel panel-default">
+            <div class="panel-heading">History</div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <% _.each(history, function(item){ %>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-1">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="col-xs-9">
+                                    <%= item.text %>
+                                </div>
+                                <div style="text-align: right;" class="col-xs-2">
+                                    <button class="btn btn-danger">Remove</button>
+                                </div>
+                            </div>
+                        </li>
+                    <% }); %>
+                </ul>
+                <button style="text-align: right;" class="btn btn-danger">Remove All</button>
+            </div>
+        </div>
+
+    </form>
+</div>
