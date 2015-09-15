@@ -19,10 +19,12 @@ define(function(require){
         },
 
         defaults: {
+            selected: 'active',
             "history": [
                 {
-                    id: '1',
-                    text: 'go home'
+                    id: 1,
+                    text: 'go home',
+                    status: 'completed'
                 }
             ]
         }

@@ -6,28 +6,52 @@
                 <input class="form-control" placeholder="todo item" type="text" name="todo-name" id="todo-name">
             </div>
             <div class="col-xs-2">
-                <button class="btn btn-default">Add</button>
+                <a id="addTodo" class="btn btn-default">Add</a>
             </div>
         </div>
 
         <div style="margin-top: 30px;" class="panel panel-default">
-            <div class="panel-heading">History</div>
+            <div class="panel-heading">
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="todo-tab <% if(selected == 'active'){ %> <%= 'active' %> <% } %>">
+                        <a href="javascript://" data-value="active" class="tab-button">Active</a>
+                    </li>
+                    <li role="presentation" class="todo-tab <% if(selected == 'completed'){ %> <%= 'active' %> <% } %>">
+                        <a href="javascript://" data-value="completed" class="tab-button">Completed</a>
+                    </li>
+                    <li role="presentation" class="todo-tab <% if(selected == 'favorite'){ %> <%= 'active' %> <% } %>">
+                        <a href="javascript://" data-value="favorite" class="tab-button">Favorite</a>
+                    </li>
+                </ul>
+            </div>
             <div class="panel-body">
                 <ul class="list-group">
                     <% _.each(history, function(item){ %>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-xs-1">
-                                    <input type="checkbox">
+                        <% if(item.status == selected || selected == 'all'){ %>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-1">
+                                        <input type="checkbox">
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <% if(item.status == 'completed'){ %>
+                                        <strike><%= item.text %></strike>
+                                        <% }else{ %>
+                                        <span><%= item.text %></span>
+                                        <% } %>
+                                    </div>
+                                    <div style="text-align: right;" class="col-xs-3">
+                                        <% if(item.status == 'active'){ %>
+                                            <a data-id="<%= item.id %>" href="javascript://" style="font-size: 20px; color:#eea236;" class="favorite-item glyphicon glyphicon-star-empty"></a>
+                                        <% } %>
+                                        <% if(item.status == 'active' || item.status == 'favorite'){ %>
+                                            <a data-id="<%= item.id %>" href="javascript://" style="font-size: 20px;" class="complete-item glyphicon glyphicon-ok-circle"></a>
+                                        <% } %>
+                                        <a data-id="<%= item.id %>" href="javascript://" style="font-size: 20px; color:red;" class="remove-item glyphicon glyphicon-remove-circle"></a>
+                                    </div>
                                 </div>
-                                <div class="col-xs-9">
-                                    <%= item.text %>
-                                </div>
-                                <div style="text-align: right;" class="col-xs-2">
-                                    <button class="btn btn-danger">Remove</button>
-                                </div>
-                            </div>
-                        </li>
+                            </li>
+                        <% } %>
                     <% }); %>
                 </ul>
                 <button style="text-align: right;" class="btn btn-danger">Remove All</button>

@@ -26,7 +26,7 @@ define(function(require){
 
             var todoModel = new TodoModel();
 
-            layout.content.show(new TodoView({model: todoModel}));
+            layout.content.show(new TodoView({ model: todoModel }));
         }
     });
 
