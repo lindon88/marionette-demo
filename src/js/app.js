@@ -34,7 +34,7 @@ define(function(require){
             var layoutService = new LayoutService();
             this.layout = layoutService.initLayout();
 
-
+            // start application
             this.on('start', function(){
                 console.log('on app start');
                 Backbone.history.start({pushState: false, root: '/'});

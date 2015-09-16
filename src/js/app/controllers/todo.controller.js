@@ -16,7 +16,6 @@ define(function(require){
 
     return Marionette.Controller.extend(AppTrait).extend({
         initialize: function(){
-            console.log("ToDo controller initialize");
         },
 
         todoMain: function(){

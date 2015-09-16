@@ -16,7 +16,7 @@ define(function(require){
         el: 'body',
         template: _.template(tpl),
         regions:{
-            menubar: '#menu-bar',
+            menu: '#menu',
             content: '#content',
             footer: '#footer'
         }

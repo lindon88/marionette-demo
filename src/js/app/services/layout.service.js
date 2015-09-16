@@ -12,12 +12,18 @@ define(function(require){
     var AppTrait = require('app/trails/app');
     var Layout = require('app/views/layout.view');
 
+    var Menu = require('app/views/menu/menu.view');
+
+    /**
+     * Main app layout view
+     */
     return Marionette.Object.extend(AppTrait).extend({
         initLayout: function(){
             var layout = new Layout();
             layout.render();
 
-            // here get regions and fill other regions
+            // fill regions with views
+            layout.getRegion('menu').show(new Menu());
 
             return layout;
         }

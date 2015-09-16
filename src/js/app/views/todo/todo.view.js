@@ -70,6 +70,7 @@ define(function(require){
             // change selected filter
             selected = current.data('value');
             this.model.set({selected: selected});
+            this.model.trigger("change");
 
         },
 
@@ -111,7 +112,12 @@ define(function(require){
             if(type == 'completed' || type == 'favorite'){
                 _.each(history, function(item){
                     if(item.id == id){
-                        item.status = type;
+                        if(item.status == 'favorite' && type == 'favorite'){
+                            item.status = 'active';
+                        }
+                        else{
+                            item.status = type;
+                        }
                     }
                 });
 

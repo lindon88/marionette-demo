@@ -6,6 +6,9 @@
  * http://www.bild-studio.com
  */
 
+/**
+ * Require js config
+ */
 require.config({
     'paths': {
         'underscore': '../../node_modules/underscore/underscore',
@@ -31,6 +34,9 @@ require.config({
     }
 });
 
+/**
+ * Require js start app
+ */
 require([
     'app',
     'jquery',
