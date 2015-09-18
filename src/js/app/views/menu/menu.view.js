@@ -22,24 +22,19 @@ define(function(require){
     return Marionette.LayoutView.extend(AppTrait).extend({
         tagName: 'div',
         template: _.template(tpl),
+        menuData: [],
 
-        initialize: function(){
-            this.listenTo();
+        initialize: function(options){
+            this.menuData = options.menuData;
         },
 
         onRender: function(){
 
-            var menuData = [];
-            menuData.push({title: 'Home', active: true, url: 'home'});
-            menuData.push({title: 'To-do', active: false, url: 'todo'});
-            menuData.push({title: 'About', active: false, url: 'about'});
-            menuData.push({title: 'Contact', active: false, url: 'contact'});
-
-            var menuCollection = new MenuCollection(menuData);
-
+            var menuCollection = new MenuCollection(this.menuData);
             var menuCollectionView = new MenuCollectionView({collection: menuCollection});
 
             this.$el.html(menuCollectionView.render().el);
+
         }
 
     });

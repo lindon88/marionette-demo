@@ -14,6 +14,8 @@ define(function(require){
     var AboutModel = require('app/models/about/about.model');
     var AboutView = require('app/views/about/about.view');
 
+    var Menu = require('app/views/menu/menu.view');
+
     /**
      * About controller
      */
@@ -27,6 +29,16 @@ define(function(require){
 
             // define static model
             var aboutModel = new AboutModel({ title: 'About', description: 'About our project' });
+
+            // menu items
+            var menuData = [];
+            menuData.push({title: 'Home', active: false, url: 'home'});
+            menuData.push({title: 'To-do', active: false, url: 'todo'});
+            menuData.push({title: 'About', active: true, url: 'about'});
+            menuData.push({title: 'Contact', active: false, url: 'contact'});
+
+            // set menu
+            layout.menu.show(new Menu({menuData: menuData}));
 
             // send model to view, and fill content region of our main app layout view
             layout.content.show(new AboutView({model: aboutModel}));

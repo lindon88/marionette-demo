@@ -23,7 +23,7 @@ define(function(require){
             layout.render();
 
             // fill regions with views
-            layout.getRegion('menu').show(new Menu());
+            //layout.getRegion('menu').show(new Menu());
 
             return layout;
         }

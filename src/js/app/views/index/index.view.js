@@ -18,7 +18,6 @@ define(function(require){
     return Marionette.LayoutView.extend(AppTrail).extend({
         template: _.template(tpl),
         initialize: function(options){
-            console.log(options);
             this.model = options.model;
         }
     });
